@@ -1,36 +1,31 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# 2FA Authenticator Web App
 
-## Getting Started
+## Motivation
 
-First, run the development server:
+So, there I was, bored out of my mind and in desperate need of a 2FA app to secure my accounts. Naturally, like any reasonable person, I thought, “Why pay $15 for a perfectly functional app when I could spend an entire day learning WebAssembly, Rust, and building my own web app instead?” I mean, who wouldn’t jump at the chance to turn a simple problem into a wildly overcomplicated project? Money saved, right? Totally worth it. 🙃
+
+## How to run
+
+1. Install wasm and rust
+2. npm install
+3. npm run wasm:dev // this build the wasm for dev mode
+4. npm run dev
+
+## Build
+
+build wasm for prod
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+ npm run wasm:build
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+build nextjs app
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```
+npm run build
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
-## Learn More
+### Notes
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+This implementation uses totp_rs, but since the library doesn’t support WebAssembly (WASM), I had to create [this fork](https://github.com/capdilla/totp-rs/commit/c451715d93a15fab584aedeae24bb6c1d5bddb6f) to make it work.
